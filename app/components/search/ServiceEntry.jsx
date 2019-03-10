@@ -36,7 +36,9 @@ class ServiceEntry extends Component {
     const { hit, index } = this.props;
     const description = hit.long_description || 'No description, yet...';
     const applicationProcess = hit.application_process;
-    const schedule = hit.schedule && hit.schedule.length ? { schedule_days: hit.schedule } : hit.resource_schedule;
+    const schedule = hit.schedule && hit.schedule.length ? { schedule_days: hit.schedule } : { schedule_days: hit.resource_schedule };
+
+    console.log({ schedule, hit })
 
     return (
       <li className="results-table-entry service-entry">
