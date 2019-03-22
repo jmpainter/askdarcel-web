@@ -16,7 +16,20 @@ Sentry.init({ dsn: `https://${config.SENTRY_PUBLIC_KEY}@sentry.io/${config.SENTR
 
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
-const googleAnalyticsId = (NODE_ENV === 'production' || window.location.host === 'www.askdarcel.org') ? 'UA-116318550-1' : 'UA-116318550-2';
+let googleAnalyticsId;
+
+switch (window.location.host) {
+case 'www.askdarcel.org':
+case 'askdarcel.org':
+  googleAnalyticsId = 'UA-116318550-1';
+  break;
+case 'www.sfserviceguide.org':
+case 'sfserviceguide.org':
+  googleAnalyticsId = 'UA-116318550-3';
+  break;
+default:
+  googleAnalyticsId = 'UA-116318550-2';
+}
 
 ReactGA.initialize(googleAnalyticsId);
 history.listen(loc => {
