@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { Helmet } from 'react-helmet';
+import Intercom from 'react-intercom';
 import Navigation from './ui/Navigation';
 // import CategoryPage from './find/FindPage';
 // import ResourcesTable from './search/ResourcesTable';
 import { round } from '../utils/index';
+import { isSFServiceGuideSite } from '../utils/whitelabel';
 import 'react-select/dist/react-select.css';
 import { connect } from 'react-redux';
 import userActions from '../actions/userActions';
@@ -144,6 +147,10 @@ class App extends Component {
     const pageWrapId = 'page-wrap';
     return (
       <div id={outerContainerId}>
+        <Helmet>
+          <title>{ isSFServiceGuideSite() ? 'SF Service Guide' : 'AskDarcel' }</title>
+        </Helmet>
+        {config.INTERCOM_APP_ID && <Intercom appID={config.INTERCOM_APP_ID} />}
         <HamburgerMenu
           isOpen={this.state.hamburgerMenuIsOpen}
           location={this.props.location}

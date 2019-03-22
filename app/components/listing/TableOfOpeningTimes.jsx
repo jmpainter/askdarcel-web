@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { RelativeOpeningTime } from './RelativeOpeningTime';
+import { sortScheduleDays } from '../../utils';
 
 export class TableOfOpeningTimes extends React.Component {
   static getScheduleTimestamp(sched) {
@@ -24,7 +25,7 @@ export class TableOfOpeningTimes extends React.Component {
     return (
       <table className="compact">
         <tbody>
-          { schedule.schedule_days.map(sched => {
+          { sortScheduleDays(schedule.schedule_days).map(sched => {
             const { opens_at, closes_at } = TableOfOpeningTimes.getScheduleTimestamp(sched);
             return (
               <tr key={sched.id}>

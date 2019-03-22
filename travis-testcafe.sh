@@ -41,7 +41,7 @@ docker run -d \
   -p 3000:3000 \
   sheltertechsf/askdarcel-api:latest bash -c 'bundle install --with=development && bundle exec rake db:setup db:populate && bundle exec rails server --binding=0.0.0.0'
 npm run build
-npm run dev &
+TESTCAFE_RUNNING=true npm run dev &
 WEB_PID=$!
 
 # Wait long enough for npm run dev to finish compiling and for Rails to start

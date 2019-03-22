@@ -1,4 +1,4 @@
-import config from '../config';
+import { isSFServiceGuideSite } from '../utils/whitelabel';
 
 const icons = require.context('../assets/img', true, /ic-.*\.(png|svg)$/i);
 const iconPathMap = {};
@@ -10,16 +10,14 @@ function icon(name) {
   return iconPathMap[name.toLowerCase().replace(/(\s+|\/)/g, '-')];
 }
 
-const subDomain = window.location.host.split('.')[0];
-
 let appImages = {};
-if (subDomain === config.MOHCD_SUBDOMAIN) {
+if (isSFServiceGuideSite()) {
 /* eslint-enable no-undef */
   /* eslint-disable global-require */
   appImages = {
     background: require('../assets/img/bg.png'),
-    logoLarge: require('../assets/img/help-sfgov.svg'),
-    logoSmall: require('../assets/img/help-sfgov.svg'),
+    logoLarge: require('../assets/img/sf-service.svg'),
+    logoSmall: require('../assets/img/sf-service.svg'),
     algolia: require('../assets/img/search-by-algolia.png'),
     mohcdSeal: require('../assets/img/sf-seal.png'),
     icon,
