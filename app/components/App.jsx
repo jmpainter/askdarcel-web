@@ -11,6 +11,8 @@ import 'react-select/dist/react-select.css';
 import userActions from '../actions/userActions';
 import config from '../config';
 import HamburgerMenu from './ui/HamburgerMenu';
+import askDarcelFavicon from '../askdarcel-favicon.ico';
+import sfServiceGuideFavicon from '../sfserviceguide-favicon.ico';
 
 
 const coordsInSanFrancisco = coords => {
@@ -147,6 +149,11 @@ class App extends Component {
       <div id={outerContainerId}>
         <Helmet>
           <title>{ isSFServiceGuideSite() ? 'SF Service Guide' : 'AskDarcel' }</title>
+          <link 
+            rel="icon"
+            type="image/png"
+            href={ isSFServiceGuideSite() ? sfServiceGuideFavicon : askDarcelFavicon }
+          />
         </Helmet>
         {config.INTERCOM_APP_ID && <Intercom appID={config.INTERCOM_APP_ID} />}
         <HamburgerMenu

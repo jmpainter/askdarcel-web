@@ -50,7 +50,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Ask Darcel',
       template: 'app/index.html',
-      favicon: 'app/favicon.ico',
     }),
     new ExtendedDefinePlugin({
       CONFIG: config,
@@ -122,7 +121,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+        test: /\.(jpe?g|png|gif|svg|ico)$/i,
         use: [
           {
             loader: 'file-loader',
